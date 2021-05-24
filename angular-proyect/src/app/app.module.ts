@@ -5,12 +5,12 @@ import { HttpClientModule } from "@angular/common/http";
 
 import { AppComponent } from './app.component';
 import { SpotifyTestsComponent } from './components/api-testing/spotify-tests/spotify-tests.component';
-import { DezzerTestsComponent } from './components/api-testing/dezzer-tests/dezzer-tests.component';
+import { DeezerTestsComponent } from './components/api-testing/deezer-tests/deezer-tests.component';
 import { SoundcloudTestsComponent } from './components/api-testing/soundcloud-tests/soundcloud-tests.component';
 
 const appRoutes: Routes = [
   {path: 'spotify-tests', component: SpotifyTestsComponent},
-  {path: 'dezzer-tests', component: DezzerTestsComponent},
+  {path: 'deezer-tests', component: DeezerTestsComponent},
   {path: 'soundcloud-tests', component: SoundcloudTestsComponent},
 ]
 
@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   declarations: [
     AppComponent,
     SpotifyTestsComponent,
-    DezzerTestsComponent,
+    DeezerTestsComponent,
     SoundcloudTestsComponent
   ],
   imports: [
@@ -29,4 +29,6 @@ const appRoutes: Routes = [
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+}

@@ -10,6 +10,7 @@ export class SoundcloudTestsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
 }

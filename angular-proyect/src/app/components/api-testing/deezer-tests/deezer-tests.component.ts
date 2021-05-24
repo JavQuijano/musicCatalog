@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-dezzer-tests',
-  templateUrl: './dezzer-tests.component.html',
-  styleUrls: ['./dezzer-tests.component.css']
+  templateUrl: './deezer-tests.component.html',
+  styleUrls: ['./deezer-tests.component.css']
 })
-export class DezzerTestsComponent implements OnInit {
+export class DeezerTestsComponent implements OnInit {
 
   constructor() { }
 

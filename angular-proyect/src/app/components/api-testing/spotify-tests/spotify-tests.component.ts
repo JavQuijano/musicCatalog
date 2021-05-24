@@ -16,6 +16,11 @@ export class SpotifyTestsComponent implements OnInit {
   constructor(private spotify:SpotifyApiService) {}
 
   ngOnInit(): void {
+    this.spotify.setAccessToken().then(() => this.callFunctions());
+  }
+
+  callFunctions():void {
+    console.log(this.spotify.getAccessToken());
     this.spotify.getNewReleases().subscribe((newReleases) => {this.newReleases = newReleases;
     console.log(newReleases)});
     this.searchSong();
