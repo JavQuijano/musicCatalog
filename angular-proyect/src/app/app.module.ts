@@ -6,12 +6,16 @@ import { HttpClientModule } from "@angular/common/http";
 import { AppComponent } from './app.component';
 import { SpotifyTestsComponent } from './components/api-testing/spotify-tests/spotify-tests.component';
 import { DeezerTestsComponent } from './components/api-testing/deezer-tests/deezer-tests.component';
-import { SoundcloudTestsComponent } from './components/api-testing/soundcloud-tests/soundcloud-tests.component';
+import { HeaderComponent } from './components/header/header.component';
+import { SongComponent } from './components/song/song.component';
+import { TopSongsComponent } from './components/top-songs/top-songs.component';
+import { CatalogComponent } from './components/catalog/catalog.component';
 
 const appRoutes: Routes = [
   {path: 'spotify-tests', component: SpotifyTestsComponent},
   {path: 'deezer-tests', component: DeezerTestsComponent},
-  {path: 'soundcloud-tests', component: SoundcloudTestsComponent},
+  {path: 'releases', component: CatalogComponent},
+  {path: 'top-songs', component: TopSongsComponent}
 ]
 
 @NgModule({
@@ -19,7 +23,10 @@ const appRoutes: Routes = [
     AppComponent,
     SpotifyTestsComponent,
     DeezerTestsComponent,
-    SoundcloudTestsComponent
+    HeaderComponent,
+    SongComponent,
+    TopSongsComponent,
+    CatalogComponent
   ],
   imports: [
     BrowserModule,
