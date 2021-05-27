@@ -62,7 +62,7 @@ export class SpotifyApiService {
     }).pipe(retry(3), shareReplay());;
   }
 
-  public getAlbum(albumId: number){
+  public getAlbum(albumId: any){
     const httpOptions = new HttpHeaders({
       'Authorization': 'Bearer ' + this.accessToken
     });
@@ -71,11 +71,20 @@ export class SpotifyApiService {
     }).pipe(retry(3), shareReplay());;
   }
 
-  public getSong(songId : number){
+  public getSong(songId : any){
     const httpOptions = new HttpHeaders({
       'Authorization': 'Bearer ' + this.accessToken
     });
     return this.http.get<Song>(this.apiUrl + "tracks/" + songId, {
+      headers: httpOptions
+    }).pipe(retry(3), shareReplay());;
+  }
+
+  public getTopTen(){
+    const httpOptions = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.accessToken
+    });
+    return this.http.get<SongSearch>(this.apiUrl + "playlists/37i9dQZF1DXcBWIGoYBM5M", {
       headers: httpOptions
     }).pipe(retry(3), shareReplay());;
   }
