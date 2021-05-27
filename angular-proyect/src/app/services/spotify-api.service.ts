@@ -4,6 +4,8 @@ import { Observable } from 'rxjs';
 import { AlbumSearch } from '../classes/album-search';
 import { SongSearch } from '../classes/song-search';
 import { retry, catchError, shareReplay, share } from 'rxjs/operators';
+import { Album } from '../classes/album';
+import { Song } from '../classes/song';
 
 const httpTokenOptions = {
   headers: new HttpHeaders({
@@ -59,4 +61,23 @@ export class SpotifyApiService {
       params: searchParams
     }).pipe(retry(3), shareReplay());;
   }
+
+  public getAlbum(albumId: number){
+    const httpOptions = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.accessToken
+    });
+    return this.http.get<Album>(this.apiUrl + "albums/" + albumId, {
+      headers: httpOptions
+    }).pipe(retry(3), shareReplay());;
+  }
+
+  public getSong(songId : number){
+    const httpOptions = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.accessToken
+    });
+    return this.http.get<Song>(this.apiUrl + "tracks/" + songId, {
+      headers: httpOptions
+    }).pipe(retry(3), shareReplay());;
+  }
+
 }
