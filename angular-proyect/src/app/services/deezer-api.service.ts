@@ -9,13 +9,26 @@ import { SongSearch } from '../classes/song-search';
 })
 export class DeezerApiService {
 
-  private apiUrl = "https://api.deezer.com/search";
+  private apiUrl = "https://api.deezer.com/";
 
   constructor(private http:HttpClient) { }
 
   public searchDeezer(params:HttpParams):Observable<SongSearch>{
-    return this.http.get<SongSearch>(this.apiUrl, {
+    return this.http.get<SongSearch>(this.apiUrl + 'search', {
       params: params
     });
   }
+
+  public getTopTen():Observable<SongSearch>{
+    return this.http.get<SongSearch>(this.apiUrl + 'playlist/3155776842');
+  }
+
+  public getAlbum(albumId :any){
+    return this.http.get<SongSearch>(this.apiUrl + 'album/' + albumId);
+  }
+
+  public getSong(songId:any){
+    return this.http.get<SongSearch>(this.apiUrl + 'track/' + songId);
+  }
+
 }
