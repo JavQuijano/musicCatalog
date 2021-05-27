@@ -42,7 +42,7 @@ export class SpotifyApiService {
       'Authorization': 'Bearer ' + this.accessToken
     });
     const params = new HttpParams()
-      .set('limit','5')
+      .set('limit','8')
       .set('offset', '0');
     return this.http.get<AlbumSearch>(this.apiUrl + "browse/new-releases", {
       headers: httpOptions,

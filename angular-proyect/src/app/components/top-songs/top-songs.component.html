@@ -1,0 +1,25 @@
+<div class="card mt-5 mb-5">
+  <div class="card-body">
+    <h4 class="card-title">Top 10 {{company}}</h4>
+    <table class="table table-borderless table-hover">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Canción</th>
+          <th>Duración</th>
+          <th>Artista</th>
+          <th>Álbum</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let number of [1,2,3,4,5,6,7,8,9,10]">
+          <th scope="row">{{number}}</th>
+          <td>Holier Than Thou</td>
+          <td>5:31</td>
+          <td>Metallica</td>
+          <td>Black Album</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
