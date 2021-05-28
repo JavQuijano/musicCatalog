@@ -11,6 +11,7 @@ import { SongComponent } from './components/song/song.component';
 import { TopSongsComponent } from './components/top-songs/top-songs.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { SongsListComponent } from './components/songs-list/songs-list.component';
+import { DocumentationComponent } from './components/documentation/documentation.component';
 
 const appRoutes: Routes = [
   {path: 'spotify-tests', component: SpotifyTestsComponent},
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
   {path: 'releases', component: CatalogComponent},
   {path: 'top-songs', component: TopSongsComponent},
   {path: 'song/:id', component: SongComponent},
-  {path: 'search/:param', component: SongsListComponent}
+  {path: 'search/:param', component: SongsListComponent},
+  {path: 'documentation', component: DocumentationComponent}
 ]
 
 @NgModule({
@@ -30,7 +32,8 @@ const appRoutes: Routes = [
     SongComponent,
     TopSongsComponent,
     CatalogComponent,
-    SongsListComponent
+    SongsListComponent,
+    DocumentationComponent
   ],
   imports: [
     BrowserModule,
