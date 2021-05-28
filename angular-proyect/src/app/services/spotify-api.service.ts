@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Observable } from 'rxjs';
-import { AlbumSearch } from '../classes/album-search';
-import { SongSearch } from '../classes/song-search';
 import { retry, catchError, shareReplay, share } from 'rxjs/operators';
 import { Album } from '../classes/album';
 import { Song } from '../classes/song';
@@ -39,27 +37,14 @@ export class SpotifyApiService {
     return this.accessToken;
   }
 
-  public getNewReleases(): Observable<AlbumSearch>{
+  public searchSpotify(searchParams:HttpParams):Observable<any>{
     const httpOptions = new HttpHeaders({
       'Authorization': 'Bearer ' + this.accessToken
     });
-    const params = new HttpParams()
-      .set('limit','8')
-      .set('offset', '0');
-    return this.http.get<AlbumSearch>(this.apiUrl + "browse/new-releases", {
-      headers: httpOptions,
-      params: params
-    }).pipe(retry(3), shareReplay());
-  }
-
-  public searchSpotify(searchParams:HttpParams):Observable<SongSearch>{
-    const httpOptions = new HttpHeaders({
-      'Authorization': 'Bearer ' + this.accessToken
-    });
-    return this.http.get<SongSearch>(this.apiUrl + "search", {
+    return this.http.get<any>(this.apiUrl + "search", {
       headers: httpOptions,
       params: searchParams
-    }).pipe(retry(3), shareReplay());;
+    }).pipe(retry(3), shareReplay());
   }
 
   public getAlbum(albumId: any){
@@ -68,7 +53,7 @@ export class SpotifyApiService {
     });
     return this.http.get<Album>(this.apiUrl + "albums/" + albumId, {
       headers: httpOptions
-    }).pipe(retry(3), shareReplay());;
+    }).pipe(retry(3), shareReplay());
   }
 
   public getSong(songId : any){
@@ -77,16 +62,29 @@ export class SpotifyApiService {
     });
     return this.http.get<Song>(this.apiUrl + "tracks/" + songId, {
       headers: httpOptions
-    }).pipe(retry(3), shareReplay());;
+    }).pipe(retry(3), shareReplay());
   }
 
-  public getTopTen(){
+  public getTopTen(): Observable<any>{
     const httpOptions = new HttpHeaders({
       'Authorization': 'Bearer ' + this.accessToken
     });
-    return this.http.get<SongSearch>(this.apiUrl + "playlists/37i9dQZF1DXcBWIGoYBM5M", {
+    return this.http.get<any>(this.apiUrl + "playlists/37i9dQZF1DXcBWIGoYBM5M", {
       headers: httpOptions
-    }).pipe(retry(3), shareReplay());;
+    }).pipe(retry(3), shareReplay());
+  }
+
+  public getNewReleases(): Observable<any>{
+    const httpOptions = new HttpHeaders({
+      'Authorization': 'Bearer ' + this.accessToken
+    });
+    const params = new HttpParams()
+      .set('limit','12')
+      .set('offset', '0');
+    return this.http.get<any>(this.apiUrl + "browse/new-releases", {
+      headers: httpOptions,
+      params: params
+    }).pipe(retry(3), shareReplay());
   }
 
 }

@@ -1,17 +1,14 @@
 <div>
-  <div class="row">
-    <div *ngFor="let album of newReleases.items" class="col-3 mt-3">
+  <div *ngIf="newReleases" class="row">
+    <div *ngFor="let album of newReleases.albums.items" class="col-3 mt-3">
       <div class="card">
-        <img class="card-img-top" src="assets/images/test.png" alt="Card image cap">
+        <img class="card-img-top" src="{{album.images[1].url}}" alt="Card image cap">
         <div class="card-body">
-          <h4 class="card-title">Sad But True</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Metallica</h6>
-          <p>Escuchar en:</p>
-          <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
-            <button type="button" class="btn btn-primary">Spotify</button>
-            <button type="button" class="btn btn-primary">Deezer</button>
-            <button type="button" class="btn btn-primary">SoundCloud</button>
-          </div>
+          <h4 class="card-title">{{album.artists[0].name}}</h4>
+          <h6 class="card-subtitle mb-2 text-muted">{{album.name}}</h6>
+          <p><strong>Fecha de lanzamientos:</strong> {{album.release_date}}</p>
+          <p><strong>Numero de canciones:</strong> {{album.total_tracks}}</p>
+          <a target="_blank" href="{{album.external_urls.spotify}}" class="btn btn-primary">Ver en Spotify</a>
         </div>
       </div>
     </div>
