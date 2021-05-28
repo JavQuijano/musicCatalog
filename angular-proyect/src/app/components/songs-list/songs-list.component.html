@@ -41,15 +41,16 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let track of tracks">
-              <td>{{track.name}}</td>
-              <td>{{this.getTimeInMinute(track.duration_ms)}}</td>
-              <td>{{track.artists[0].name}}</td>
-              <td>{{track.album.name}}</td>
+            <tr *ngFor="let track of tracksDeezer">
+              <td>{{track.title}}</td>
+              <td>{{this.secondsToMinutes(track.duration)}}</td>
+              <td>{{track.artist.name}}</td>
+              <td>{{track.album.title}}</td>
+              <td style="width:200px;"><a target="_blank" href="{{track.link}}" class="btn btn-primary">Escuchar en Deezer</a></td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>    
+    </div>
   </div>
 </div>

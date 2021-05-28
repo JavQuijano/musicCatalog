@@ -42,17 +42,17 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let song of topSongs; let i = index" [attr.data-index]="i">
+            <tr *ngFor="let song of deezerTopSongs; let i = index" [attr.data-index]="i">
               <th scope="row">{{i + 1}}</th>
-              <td>{{song.track.name}}</td>
-              <td>{{getTimeInMinute(song.track.duration_ms)}}</td>
-              <td>{{song.track.artists[0].name}}</td>
-              <td>{{song.track.album.name}}</td>
+              <td>{{song.title}}</td>
+              <td>{{secondsToMinutes(song.duration)}}</td>
+              <td>{{song.artist.name}}</td>
+              <td>{{song.album.title}}</td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>    
+    </div>
   </div>
 </div>
 

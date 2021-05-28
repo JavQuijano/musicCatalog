@@ -21,18 +21,27 @@ export class TopSongsComponent implements OnInit {
   }
 
   getSpotifyTopTen():void {
-    this.spotify.getTopTen().subscribe((topSongs) => {this.topSongs = topSongs.tracks.items.slice(0, 10)}); 
-    
+    this.spotify.getTopTen().subscribe((topSongs) => {this.topSongs = topSongs.tracks.items.slice(0, 10)});
+
   }
 
   getDeezerTopTen():void {
-    this.deezer.getTopTen().subscribe((deezerTopSongs) => {this.deezerTopSongs = deezerTopSongs; console.log(this.deezerTopSongs)})
+    this.deezer.getTopTen().subscribe((deezerTopSongs) => {this.deezerTopSongs = deezerTopSongs.tracks.data.slice(0, 10); console.log(this.deezerTopSongs)})
   }
 
   getTimeInMinute(millis){
     let minutes = Math.floor(millis / 60000);
     let seconds = parseInt(((millis % 60000) / 1000).toFixed(0));
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
+  }
+
+  secondsToMinutes(duration){
+    var mins = ~~((duration % 3600) / 60);
+    var secs = ~~duration % 60;
+    var ret = "";
+    ret += "" + mins + ":" + (secs < 10 ? "0" : "");
+    ret += "" + secs;
+    return ret;
   }
 
 }
