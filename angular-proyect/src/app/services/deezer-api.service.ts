@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
+import { retry, catchError, shareReplay, share } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { AlbumSearch } from '../classes/album-search';
 import { SongSearch } from '../classes/song-search';
 
 @Injectable({
@@ -19,8 +19,9 @@ export class DeezerApiService {
     });
   }
 
-  public getTopTen():Observable<SongSearch>{
-    return this.http.get<SongSearch>(this.apiUrl + 'playlist/3155776842');
+  public getTopTen():Observable<any>{
+
+    return this.http.get<any>(this.apiUrl + 'playlist/3155776842').pipe(retry(3), shareReplay());
   }
 
   public getAlbum(albumId :any){

@@ -10,12 +10,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { SongComponent } from './components/song/song.component';
 import { TopSongsComponent } from './components/top-songs/top-songs.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
+import { SongsListComponent } from './components/songs-list/songs-list.component';
 
 const appRoutes: Routes = [
   {path: 'spotify-tests', component: SpotifyTestsComponent},
   {path: 'deezer-tests', component: DeezerTestsComponent},
   {path: 'releases', component: CatalogComponent},
-  {path: 'top-songs', component: TopSongsComponent}
+  {path: 'top-songs', component: TopSongsComponent},
+  {path: 'song/:id', component: SongComponent},
+  {path: 'search/:param', component: SongsListComponent}
 ]
 
 @NgModule({
@@ -26,7 +29,8 @@ const appRoutes: Routes = [
     HeaderComponent,
     SongComponent,
     TopSongsComponent,
-    CatalogComponent
+    CatalogComponent,
+    SongsListComponent
   ],
   imports: [
     BrowserModule,

@@ -27,10 +27,6 @@ export class SpotifyTestsComponent implements OnInit {
   }
 
   searchSong(){
-    const params = new HttpParams()
-    .set('q', 'coldplay clocks')
-    .set('type', 'track');
-    this.spotify.searchSpotify(params).subscribe((results) => {console.log(results)})
   }
 
 

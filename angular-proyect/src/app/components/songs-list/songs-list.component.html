@@ -3,24 +3,24 @@
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Top 10 Spotify</h4>
+        <h4 class="card-title">Busqueda Spotify</h4>
         <table class="table table-borderless table-hover">
           <thead>
             <tr>
-              <th>#</th>
               <th>Canción</th>
               <th>Duración</th>
               <th>Artista</th>
               <th>Álbum</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let song of topSongs; let i = index" [attr.data-index]="i" class="table-select" routerLink="/song/{{song.track.id}}" routerLinkActive="active">
-              <th scope="row">{{i + 1}}</th>
-              <td>{{song.track.name}}</td>
-              <td>{{getTimeInMinute(song.track.duration_ms)}}</td>
-              <td>{{song.track.artists[0].name}}</td>
-              <td>{{song.track.album.name}}</td>
+            <tr *ngFor="let track of tracks" routerLink="/song/{{track.id}}" routerLinkActive="active" class="table-select">
+              <td>{{track.name}}</td>
+              <td>{{this.getTimeInMinute(track.duration_ms)}}</td>
+              <td>{{track.artists[0].name}}</td>
+              <td>{{track.album.name}}</td>
+              <td style="width:200px;"><a target="_blank" href="{{track.external_urls.spotify}}" class="btn btn-primary">Escuchar en Spotify</a></td>
             </tr>
           </tbody>
         </table>
@@ -31,11 +31,10 @@
   <div class="col-6">
     <div class="card">
       <div class="card-body">
-        <h4 class="card-title">Top 10 Deezer</h4>
+        <h4 class="card-title">Busqueda Deezer</h4>
         <table class="table table-borderless table-hover">
           <thead>
             <tr>
-              <th>#</th>
               <th>Canción</th>
               <th>Duración</th>
               <th>Artista</th>
@@ -43,12 +42,11 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let song of topSongs; let i = index" [attr.data-index]="i">
-              <th scope="row">{{i + 1}}</th>
-              <td>{{song.track.name}}</td>
-              <td>{{getTimeInMinute(song.track.duration_ms)}}</td>
-              <td>{{song.track.artists[0].name}}</td>
-              <td>{{song.track.album.name}}</td>
+            <tr *ngFor="let track of tracks">
+              <td>{{track.name}}</td>
+              <td>{{this.getTimeInMinute(track.duration_ms)}}</td>
+              <td>{{track.artists[0].name}}</td>
+              <td>{{track.album.name}}</td>
             </tr>
           </tbody>
         </table>
@@ -56,4 +54,3 @@
     </div>    
   </div>
 </div>
-

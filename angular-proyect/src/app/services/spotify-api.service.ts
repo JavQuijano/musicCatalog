@@ -37,13 +37,14 @@ export class SpotifyApiService {
     return this.accessToken;
   }
 
-  public searchSpotify(searchParams:HttpParams):Observable<any>{
+  public searchSpotify(value:string):Observable<any>{
+    const params = new HttpParams().set('q', value).set('type', 'track')
     const httpOptions = new HttpHeaders({
       'Authorization': 'Bearer ' + this.accessToken
     });
     return this.http.get<any>(this.apiUrl + "search", {
       headers: httpOptions,
-      params: searchParams
+      params: params
     }).pipe(retry(3), shareReplay());
   }
 
@@ -56,7 +57,7 @@ export class SpotifyApiService {
     }).pipe(retry(3), shareReplay());
   }
 
-  public getSong(songId : any){
+  public getSong(songId : any): Observable<any>{
     const httpOptions = new HttpHeaders({
       'Authorization': 'Bearer ' + this.accessToken
     });

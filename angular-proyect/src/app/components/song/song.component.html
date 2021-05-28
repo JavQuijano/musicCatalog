@@ -1,30 +1,26 @@
-<app-top-songs company="Spotify"></app-top-songs>
-<app-top-songs company="Deezer"></app-top-songs>
-<app-top-songs company="SoundCloud"></app-top-songs>
-<div class="mt-5">
+<app-header></app-header>
+<div class="mt-5 container">
   <div class="row">
     <div class="col-12">
       <div class="card h-100">
-        <img class="card-img-top" src="assets/images/test.png" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">Enter Sandman</h4>
-          <h6 class="card-subtitle mb-2 text-muted">Metallica - 1991 - 5:31</h6>
-          <p class="card-text">
-            <strong>Interpretado por:</strong> Metallica
-          </p>
-
-          <p class="card-text">
-            <strong>Compuesta por:</strong> James Hetfield, Kirk Hammett, Lars Ulrich
-          </p>
-
-          <p class="card-text">
-            <strong>Producida por:</strong> Bob Rock, James Hetfield, Lars Ulrich
-          </p>
-
-          <div class="d-flex justify-content-between">
-            <button type="button" class="btn btn-primary">Listen on Soundcloud</button>
-            <button type="button" class="btn btn-primary">Listen on Spotify</button>
-            <button type="button" class="btn btn-primary">Listen on Deezer</button>
+        <img class="card-img-top" src="{{song.album.images[1].url}}" alt="Card image cap">
+        <div class="card-body h-100 d-flex align-items-center">
+          <div>
+            <h4 class="card-title">{{song.name}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">{{song.album.name}} - {{song.album.release_date.slice(0,4)}} - {{this.getTimeInMinute(song.duration_ms)}}</h6>
+            <p class="card-text">
+              <strong>Interpretado por:</strong> {{song.artists[0].name}}
+            </p>
+  
+            <p class="card-text">
+              <strong>Compuesta por:</strong> James Hetfield, Kirk Hammett, Lars Ulrich
+            </p>
+  
+            <p class="card-text">
+              <strong>Producida por:</strong> Bob Rock, James Hetfield, Lars Ulrich
+            </p>
+  
+            <a target="_blank" href="{{song.external_urls.spotify}}" class="btn btn-primary">Escuchar en Spotify</a>
           </div>
         </div>
       </div>
