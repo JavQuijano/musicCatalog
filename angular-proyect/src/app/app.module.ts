@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
+import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { SpotifyTestsComponent } from './components/api-testing/spotify-tests/spotify-tests.component';
@@ -13,7 +14,9 @@ import { CatalogComponent } from './components/catalog/catalog.component';
 import { SongsListComponent } from './components/songs-list/songs-list.component';
 import { DocumentationComponent } from './components/documentation/documentation.component';
 
+
 const appRoutes: Routes = [
+  {path: '', component: CatalogComponent},
   {path: 'spotify-tests', component: SpotifyTestsComponent},
   {path: 'deezer-tests', component: DeezerTestsComponent},
   {path: 'releases', component: CatalogComponent},
@@ -38,7 +41,9 @@ const appRoutes: Routes = [
   imports: [
     BrowserModule,
     HttpClientModule,
-    RouterModule.forRoot(appRoutes)
+    RouterModule.forRoot(appRoutes),
+    NgbModule,
+    NgbPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]

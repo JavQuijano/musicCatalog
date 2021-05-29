@@ -1,6 +1,6 @@
 <div class="container">
   <div *ngIf="newReleases" class="row">
-    <div *ngFor="let album of newReleases.albums.items" class="col-3 mt-3">
+    <div *ngFor="let album of newReleases.albums.items | slice: pageSize | slice: 0:itemsPerPage" class="col-3 mt-3">
       <div class="card">
         <img class="card-img-top" src="{{album.images[1].url}}" alt="Card image cap">
         <div class="card-body">
@@ -12,5 +12,18 @@
         </div>
       </div>
     </div>
+
+
+
   </div>
+  <br>
+  <br>
+  <ngb-pagination
+      class="inline-pagination"
+      [collectionSize]="newReleases.albums.items.length"
+      #numPages
+      [pageSize]="itemsPerPage"
+      [(page)]="currentPage"
+      (pageChange)="onPageChange(currentPage)">
+    </ngb-pagination>
 </div>

@@ -80,11 +80,11 @@ export class SpotifyApiService {
       'Authorization': 'Bearer ' + this.accessToken
     });
     const params = new HttpParams()
-      .set('limit','12')
+      .set('limit','25')
       .set('offset', '0');
     return this.http.get<any>(this.apiUrl + "browse/new-releases", {
       headers: httpOptions,
-      params: params
+      //params: params
     }).pipe(retry(3), shareReplay());
   }
 
