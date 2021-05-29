@@ -1,7 +1,7 @@
 <div class="mt-5 container">
   <div class="row">
     <div class="col-12">
-      <div class="card h-100">
+      <div class="card h-100" *ngIf="platform == 'spotify'">
         <img class="card-img-top" src="{{song.album.images[1].url}}" alt="Card image cap">
         <div class="card-body h-100 d-flex align-items-center">
           <div>
@@ -10,16 +10,20 @@
             <p class="card-text">
               <strong>Interpretado por:</strong> {{song.artists[0].name}}
             </p>
-  
-            <p class="card-text">
-              <strong>Compuesta por:</strong> James Hetfield, Kirk Hammett, Lars Ulrich
-            </p>
-  
-            <p class="card-text">
-              <strong>Producida por:</strong> Bob Rock, James Hetfield, Lars Ulrich
-            </p>
-  
             <a target="_blank" href="{{song.external_urls.spotify}}" class="btn btn-primary">Escuchar en Spotify</a>
+          </div>
+        </div>
+      </div>
+      <div class="card h-100" *ngIf="platform == 'deezer'">
+        <img class="card-img-top" src="{{song.album.cover_big}}" alt="Card image cap">
+        <div class="card-body h-100 d-flex align-items-center">
+          <div>
+            <h4 class="card-title">{{song.title}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">{{song.album.title}} - {{this.secondsToMinutes(song.duration)}}</h6>
+            <p class="card-text">
+              <strong>Interpretado por:</strong> {{song.artist.name}}
+            </p>
+            <a target="_blank" href="{{song.link}}" class="btn btn-primary">Escuchar en Deezer</a>
           </div>
         </div>
       </div>

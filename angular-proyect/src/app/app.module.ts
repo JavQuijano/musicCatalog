@@ -18,7 +18,7 @@ const appRoutes: Routes = [
   {path: 'deezer-tests', component: DeezerTestsComponent},
   {path: 'releases', component: CatalogComponent},
   {path: 'top-songs', component: TopSongsComponent},
-  {path: 'song/:id', component: SongComponent},
+  {path: 'song/:platform/:id', component: SongComponent},
   {path: 'search/:param', component: SongsListComponent},
   {path: 'documentation', component: DocumentationComponent}
 ]

@@ -1,56 +1,59 @@
-<div class="row mt-5 mb-5">
-  <div class="col-6">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Busqueda Spotify</h4>
-        <table class="table table-borderless table-hover">
-          <thead>
-            <tr>
-              <th>Canción</th>
-              <th>Duración</th>
-              <th>Artista</th>
-              <th>Álbum</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let track of tracks" routerLink="/song/{{track.id}}" routerLinkActive="active" class="table-select">
-              <td>{{track.name}}</td>
-              <td>{{this.getTimeInMinute(track.duration_ms)}}</td>
-              <td>{{track.artists[0].name}}</td>
-              <td>{{track.album.name}}</td>
-              <td style="width:200px;"><a target="_blank" href="{{track.external_urls.spotify}}" class="btn btn-primary">Escuchar en Spotify</a></td>
-            </tr>
-          </tbody>
-        </table>
+<div class="container">
+  <div class="row mt-5 mb-5">
+    <div class="col-md-12 col-lg-6">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Busqueda Spotify</h4>
+          <table class="table table-borderless table-hover table-striped">
+            <thead>
+              <tr>
+                <th>Canción</th>
+                <th>Duración</th>
+                <th>Artista</th>
+                <th>Álbum</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let track of tracks" routerLink="/song/spotify/{{track.id}}" routerLinkActive="active" class="table-select spoty-song">
+                <td>{{track.name}}</td>
+                <td>{{this.getTimeInMinute(track.duration_ms)}}</td>
+                <td>{{track.artists[0].name}}</td>
+                <td>{{track.album.name}}</td>
+                <td style="width:120px;"><a target="_blank" href="{{track.external_urls.spotify}}" class="btn btn-primary spotify-btn">Escuchar en Spotify</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div class="col-6" *ngIf="tracksDeezer">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Busqueda Deezer</h4>
-        <table class="table table-borderless table-hover">
-          <thead>
-            <tr>
-              <th>Canción</th>
-              <th>Duración</th>
-              <th>Artista</th>
-              <th>Álbum</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let track of tracksDeezer">
-              <td>{{track.title}}</td>
-              <td>{{this.secondsToMinutes(track.duration)}}</td>
-              <td>{{track.artist.name}}</td>
-              <td>{{track.album.title}}</td>
-              <td style="width:200px;"><a target="_blank" href="{{track.link}}" class="btn btn-primary">Escuchar en Deezer</a></td>
-            </tr>
-          </tbody>
-        </table>
+    <div class="col-md-12 col-lg-6" *ngIf="tracksDeezer">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Busqueda Deezer</h4>
+          <table class="table table-borderless table-hover table-striped">
+            <thead>
+              <tr>
+                <th>Canción</th>
+                <th>Duración</th>
+                <th>Artista</th>
+                <th>Álbum</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let track of tracksDeezer" routerLink="/song/deezer/{{track.id}}" routerLinkActive="active" class="table-select deezer-song">
+                <td>{{track.title}}</td>
+                <td>{{this.secondsToMinutes(track.duration)}}</td>
+                <td>{{track.artist.name}}</td>
+                <td>{{track.album.title}}</td>
+                <td style="width:120px;"><a target="_blank" href="{{track.link}}" class="btn btn-primary deezer-btn">Escuchar en Deezer</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </div>
+

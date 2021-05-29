@@ -1,3 +1,21 @@
 .table-select {
   cursor: pointer;
 }
+
+.spotify-btn{
+  background-color: #1DD05D;
+  border:none;
+}
+
+.deezer-btn{
+  border: none;
+  background-color: #EF5466;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd).deezer-song{
+  background-color: rgba(239,	84,	102, 0.2)
+}
+
+.table-striped > tbody > tr:nth-of-type(odd).spoty-song{
+  background-color: rgba(29,	208,	93, 0.2)
+}
