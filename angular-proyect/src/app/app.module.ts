@@ -3,7 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
-
+import { AuthService } from './services/auth.service';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
 import { SpotifyTestsComponent } from './components/api-testing/spotify-tests/spotify-tests.component';
 import { DeezerTestsComponent } from './components/api-testing/deezer-tests/deezer-tests.component';
@@ -49,9 +51,11 @@ const appRoutes: Routes = [
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     NgbModule,
-    NgbPaginationModule
+    NgbPaginationModule,
+    FormsModule,
+    CommonModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
