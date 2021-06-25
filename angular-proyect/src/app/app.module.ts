@@ -13,6 +13,8 @@ import { TopSongsComponent } from './components/top-songs/top-songs.component';
 import { CatalogComponent } from './components/catalog/catalog.component';
 import { SongsListComponent } from './components/songs-list/songs-list.component';
 import { DocumentationComponent } from './components/documentation/documentation.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 const appRoutes: Routes = [
@@ -23,7 +25,9 @@ const appRoutes: Routes = [
   {path: 'top-songs', component: TopSongsComponent},
   {path: 'song/:platform/:id', component: SongComponent},
   {path: 'search/:param', component: SongsListComponent},
-  {path: 'documentation', component: DocumentationComponent}
+  {path: 'documentation', component: DocumentationComponent},
+  {path: 'login', component: LoginComponent},
+  {path: 'register', component: RegisterComponent},
 ]
 
 @NgModule({
@@ -36,7 +40,9 @@ const appRoutes: Routes = [
     TopSongsComponent,
     CatalogComponent,
     SongsListComponent,
-    DocumentationComponent
+    DocumentationComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
