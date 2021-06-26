@@ -21,7 +21,7 @@ export class CatalogComponent implements OnInit {
   }
 
   getNewReleases():void {
-    this.spotify.getNewReleases().subscribe((newReleases) => {this.newReleases = newReleases});
+    this.spotify.getNewReleases().subscribe((newReleases) => {this.newReleases = newReleases; console.log(newReleases)});
   }
 
   public onPageChange(pageNum: number): void {

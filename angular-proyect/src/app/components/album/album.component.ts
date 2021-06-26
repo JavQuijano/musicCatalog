@@ -2,22 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DeezerApiService } from 'src/app/services/deezer-api.service';
 import { SpotifyApiService } from 'src/app/services/spotify-api.service';
-import { faHeart as lightHeart } from '@fortawesome/free-regular-svg-icons';
-import { faHeart as boldHeart } from '@fortawesome/free-solid-svg-icons';
-import { faSpotify, faDeezer } from '@fortawesome/free-brands-svg-icons';
+
 @Component({
-  selector: 'app-song',
-  templateUrl: './song.component.html',
-  styleUrls: ['./song.component.css']
+  selector: 'app-album',
+  templateUrl: './album.component.html',
+  styleUrls: ['./album.component.css']
 })
-export class SongComponent implements OnInit {
+export class AlbumComponent implements OnInit {
   id: String;
-  song: any;
+  album: any;
   platform: String;
-  lightHeart = lightHeart;
-  boldHeart = boldHeart;
-  faSpotify = faSpotify;
-  faDeezer = faDeezer;
 
   constructor(private route: ActivatedRoute, private spotify:SpotifyApiService, private deezer:DeezerApiService) { }
 
@@ -29,29 +23,19 @@ export class SongComponent implements OnInit {
     });
     switch (this.platform){
       case 'spotify': {
-        this.getSong();
+        this.getAlbum();
         break;
       }
-      case 'deezer':{
-        this.getDeezerSong();
-        break;
-      }
-
     }
-   this.spotify.setAccessToken().then(() => this.getSong());
+   this.spotify.setAccessToken().then(() => this.getAlbum());
 
 
   }
 
-  getSong() {
-    this.spotify.getSong(this.id).subscribe((song) => {
-      this.song = song;
-    });
-  }
-
-  getDeezerSong(){
-    this.deezer.getSong(this.id).subscribe((song) => {
-      this.song = song;
+  getAlbum() {
+    this.spotify.getAlbum(this.id).subscribe((album) => {
+      this.album = album;
+      console.log(album)
     });
   }
 

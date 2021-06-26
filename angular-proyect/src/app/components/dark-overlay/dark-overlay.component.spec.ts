@@ -1,21 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TopSongsComponent } from './top-songs.component';
+import { DarkOverlayComponent } from './dark-overlay.component';
 
-describe('TopSongsComponent', () => {
-  let component: TopSongsComponent;
-  let fixture: ComponentFixture<TopSongsComponent>;
-
+describe('DarkOverlayComponent', () => {
+  let component: DarkOverlayComponent;
+  let fixture: ComponentFixture<DarkOverlayComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TopSongsComponent ]
+      declarations: [ DarkOverlayComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TopSongsComponent);
+    fixture = TestBed.createComponent(DarkOverlayComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

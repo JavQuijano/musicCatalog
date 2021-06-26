@@ -1,0 +1,20 @@
+<div class="mt-5 container" *ngIf="album">
+  <div class="row">
+    <div class="col-12">
+      <div class="card h-100" *ngIf="platform == 'spotify'">
+        <img class="card-img-top" src="{{album.images[0].url}}" alt="Card image cap">
+        <div class="card-body h-100 d-flex align-items-center">
+          <div>
+            <h4 class="card-title">{{album.name}}</h4>
+            <h6 class="card-subtitle mb-2 text-muted">Fecha de lanzamiento: {{album.release_date}}</h6>
+            <p class="card-text">
+              <strong>Interpretado por:</strong> {{album.artists[0].name}}
+            </p>
+            <a target="_blank" href="{{album.external_urls.spotify}}" class="btn btn-primary">Escuchar en Spotify</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-song-table [tracks]="album.tracks.items" [platform]="platform"></app-song-table>
+</div>

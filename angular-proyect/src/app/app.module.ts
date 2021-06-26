@@ -17,7 +17,11 @@ import { SongsListComponent } from './components/songs-list/songs-list.component
 import { DocumentationComponent } from './components/documentation/documentation.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
-
+import { CarouselComponent } from './components/carousel/carousel.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DarkOverlayComponent } from './components/dark-overlay/dark-overlay.component';
+import { AlbumComponent } from './components/album/album.component';
+import { SongTableComponent } from './components/song-table/song-table.component';
 
 const appRoutes: Routes = [
   {path: '', component: CatalogComponent},
@@ -26,6 +30,7 @@ const appRoutes: Routes = [
   {path: 'releases', component: CatalogComponent},
   {path: 'top-songs', component: TopSongsComponent},
   {path: 'song/:platform/:id', component: SongComponent},
+  {path: 'album/:platform/:id', component: AlbumComponent},
   {path: 'search/:param', component: SongsListComponent},
   {path: 'documentation', component: DocumentationComponent},
   {path: 'login', component: LoginComponent},
@@ -44,7 +49,11 @@ const appRoutes: Routes = [
     SongsListComponent,
     DocumentationComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    CarouselComponent,
+    DarkOverlayComponent,
+    AlbumComponent,
+    SongTableComponent
   ],
   imports: [
     BrowserModule,
@@ -53,7 +62,8 @@ const appRoutes: Routes = [
     NgbModule,
     NgbPaginationModule,
     FormsModule,
-    CommonModule
+    CommonModule,
+    FontAwesomeModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]

@@ -11,16 +11,16 @@
                 <th>Duración</th>
                 <th>Artista</th>
                 <th>Álbum</th>
-                <th></th>
+                <th>Escucha en</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let track of tracks" routerLink="/song/spotify/{{track.id}}" routerLinkActive="active" class="table-select spoty-song">
-                <td>{{track.name}}</td>
-                <td>{{this.getTimeInMinute(track.duration_ms)}}</td>
-                <td>{{track.artists[0].name}}</td>
-                <td>{{track.album.name}}</td>
-                <td style="width:120px;"><a target="_blank" href="{{track.external_urls.spotify}}" class="btn btn-primary spotify-btn">Escuchar en Spotify</a></td>
+              <tr *ngFor="let track of tracks" class="table-select spoty-song">
+                <td class="trackName" routerLink="/song/spotify/{{track.id}}" routerLinkActive="active">{{track.name}}</td>
+                <td routerLink="/song/spotify/{{track.id}}" routerLinkActive="active">{{this.getTimeInMinute(track.duration_ms)}}</td>
+                <td routerLink="/song/spotify/{{track.id}}" routerLinkActive="active">{{track.artists[0].name}}</td>
+                <td routerLink="/song/spotify/{{track.id}}" routerLinkActive="active">{{track.album.name}}</td>
+                <td class="platform-logo"><a target="_blank" href="{{track.external_urls.spotify}}" class="spotify-btn"><fa-icon [icon]="faSpotify" size="2x"></fa-icon></a></td>
               </tr>
             </tbody>
           </table>
@@ -39,15 +39,16 @@
                 <th>Duración</th>
                 <th>Artista</th>
                 <th>Álbum</th>
+                <th>Escucha en</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let track of tracksDeezer" routerLink="/song/deezer/{{track.id}}" routerLinkActive="active" class="table-select deezer-song">
-                <td>{{track.title}}</td>
-                <td>{{this.secondsToMinutes(track.duration)}}</td>
-                <td>{{track.artist.name}}</td>
-                <td>{{track.album.title}}</td>
-                <td style="width:120px;"><a target="_blank" href="{{track.link}}" class="btn btn-primary deezer-btn">Escuchar en Deezer</a></td>
+              <tr *ngFor="let track of tracksDeezer" class="table-select deezer-song">
+                <td class="trackName" routerLink="/song/deezer/{{track.id}}" routerLinkActive="active">{{track.title}}</td>
+                <td routerLink="/song/deezer/{{track.id}}" routerLinkActive="active">{{this.secondsToMinutes(track.duration)}}</td>
+                <td routerLink="/song/deezer/{{track.id}}" routerLinkActive="active">{{track.artist.name}}</td>
+                <td routerLink="/song/deezer/{{track.id}}" routerLinkActive="active">{{track.album.title}}</td>
+                <td class="platform-logo"><a target="_blank" href="{{track.link}}" class="deezer-btn"><fa-icon [icon]="faDeezer" size="2x"></fa-icon></a></td>
               </tr>
             </tbody>
           </table>

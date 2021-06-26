@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SpotifyApiService } from 'src/app/services/spotify-api.service';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { DeezerApiService } from 'src/app/services/deezer-api.service';
-
+import { faSpotify, faDeezer } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-songs-list',
   templateUrl: './songs-list.component.html',
@@ -13,6 +13,8 @@ export class SongsListComponent implements OnInit {
   value: string;
   tracks: any;
   tracksDeezer:any;
+  faSpotify = faSpotify;
+  faDeezer = faDeezer;
 
   constructor(private route: ActivatedRoute, private spotify:SpotifyApiService, private deezer:DeezerApiService) { }
 

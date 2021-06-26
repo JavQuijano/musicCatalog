@@ -1,0 +1,23 @@
+.track-name {
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.spotify-btn {
+  color: green;
+  border:none;
+  height: 10px;
+}
+
+td,th{
+  color:white;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd).spoty-song{
+  background-color: rgba(29,	208,	93, 0.2)
+}
+
+.tracks-table{
+  margin-top:3rem;
+  margin-bottom: 3rem;
+}

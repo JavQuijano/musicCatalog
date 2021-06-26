@@ -70,7 +70,7 @@ export class SpotifyApiService {
     const httpOptions = new HttpHeaders({
       'Authorization': 'Bearer ' + this.accessToken
     });
-    return this.http.get<any>(this.apiUrl + "playlists/37i9dQZF1DXcBWIGoYBM5M", {
+    return this.http.get<any>(this.apiUrl + "playlists/37i9dQZEVXbMDoHDwVN2tF", {
       headers: httpOptions
     }).pipe(retry(3), shareReplay());
   }
@@ -80,7 +80,7 @@ export class SpotifyApiService {
       'Authorization': 'Bearer ' + this.accessToken
     });
     const params = new HttpParams()
-      .set('limit','25')
+      .set('limit','50')
       .set('offset', '0');
     return this.http.get<any>(this.apiUrl + "browse/new-releases", {
       headers: httpOptions,
