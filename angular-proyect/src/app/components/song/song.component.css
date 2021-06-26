@@ -4,3 +4,29 @@
 .card img {
   width: 30%;
 }
+
+.spotify-btn {
+  color: green;
+  border:none;
+  height: 10px;
+}
+
+.deezer-btn {
+  color: #EF5466;
+  border:none;
+  height: 10px;
+  text-align: center;
+}
+.listenOn{
+  display: flex;
+}
+
+.listenOn .spotify-btn{
+  padding-left: 1rem;
+  vertical-align: middle;
+}
+
+.listenOn .deezer-btn{
+  padding-left: 1rem;
+  vertical-align: middle;
+}

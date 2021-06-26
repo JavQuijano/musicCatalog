@@ -1,16 +1,22 @@
 <div class="mt-5 container">
-  <div class="row">
+  <div class="row" style="display: flex; vertical-align: middle;">
     <div class="col-12">
       <div class="card h-100" *ngIf="platform == 'spotify'">
         <img class="card-img-top" src="{{song.album.images[1].url}}" alt="Card image cap">
         <div class="card-body h-100 d-flex align-items-center">
           <div>
-            <h4 class="card-title">{{song.name}}</h4>
-            <h6 class="card-subtitle mb-2 text-muted">{{song.album.name}} - {{song.album.release_date.slice(0,4)}} - {{this.getTimeInMinute(song.duration_ms)}}</h6>
+            <h4 class="card-title mb-3">{{song.name}} <fa-icon class="ps-3" [icon]="lightHeart" (click)="favChange()"></fa-icon> </h4>
+            <h6 class="card-subtitle mb-3 text-muted">{{song.album.name}} - {{song.album.release_date.slice(0,4)}}</h6>
+            <p class="card-text">
+              <strong>Duración:</strong> {{this.getTimeInMinute(song.duration_ms)}} min
+            </p>
             <p class="card-text">
               <strong>Interpretado por:</strong> {{song.artists[0].name}}
             </p>
-            <a target="_blank" href="{{song.external_urls.spotify}}" class="btn btn-primary">Escuchar en Spotify</a>
+            <div class="listenOn">
+              <b>Escuchar en: </b>
+              <a target="_blank" href="{{song.external_urls.spotify}}" class="spotify-btn"><fa-icon [icon]="faSpotify" size="2x"></fa-icon></a>
+            </div>
           </div>
         </div>
       </div>
@@ -18,12 +24,18 @@
         <img class="card-img-top" src="{{song.album.cover_big}}" alt="Card image cap">
         <div class="card-body h-100 d-flex align-items-center">
           <div>
-            <h4 class="card-title">{{song.title}}</h4>
-            <h6 class="card-subtitle mb-2 text-muted">{{song.album.title}} - {{this.secondsToMinutes(song.duration)}}</h6>
+            <h4 class="card-title mb-3">{{song.title}}</h4>
+            <h6 class="card-subtitle mb-3 text-muted">{{song.album.title}}</h6>
+            <p class="card-text">
+              <strong>Duración:</strong> {{this.secondsToMinutes(song.duration)}} min
+            </p>
             <p class="card-text">
               <strong>Interpretado por:</strong> {{song.artist.name}}
             </p>
-            <a target="_blank" href="{{song.link}}" class="btn btn-primary">Escuchar en Deezer</a>
+            <div class="listenOn">
+              <b>Escuchar en: </b>
+              <a target="_blank" href="{{song.link}}" class="deezer-btn"><fa-icon [icon]="faDeezer" size="2x"></fa-icon></a>
+            </div>
           </div>
         </div>
       </div>
