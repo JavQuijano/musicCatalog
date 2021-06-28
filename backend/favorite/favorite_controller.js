@@ -20,7 +20,6 @@ exports.addFavorite = (req, res, next) => {
 }
 
 exports.userFavorite = (req, res, next) => {
-  console.log(1)
   const userData = {
     "user_id": req.body.user_id,
     "song_id": req.body.song_id,
@@ -41,14 +40,12 @@ exports.userFavorite = (req, res, next) => {
 }
 
 exports.removeFavorite = (req, res, next) => {
-  console.log(1)
   const userData = {
     "user_id": req.body.user_id,
     "song_id": req.body.song_id,
     "platform": req.body.platform
   }
   Favorite.findOneAndRemove(userData, (err, favorite) => {
-    console.log(favorite);
     if (err) return res.status(500).send('Server error!');
 
     if (!favorite) {
@@ -68,7 +65,6 @@ exports.allFavorites = (req, res, next) => {
     "platform": req.body.platform
   }
   Favorite.find(userData, (err, favorites) => {
-    console.log(favorites)
     if (err) return res.status(500).send('Server error!');
 
     if (!favorites) {

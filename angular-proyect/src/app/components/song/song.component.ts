@@ -97,7 +97,7 @@ export class SongComponent implements OnInit {
         //cambiar icono
         //mostrar notificacion
       } else {
-        
+
       }
     });
   }
@@ -111,10 +111,8 @@ export class SongComponent implements OnInit {
 
     this.favoriteService.isFavorite(params).subscribe(res => {
       if(res.dataFavorite) {
-        console.log(1);
         this.alreadyLiked = true;
       } else {
-        console.log(2);
         this.alreadyLiked = false;
       }
     });
