@@ -29,7 +29,6 @@ export class AuthService {
       user).pipe(tap(
         (res: JwtResponseI) => {
           if (res) {
-            console.log(res.dataUser);
             this.saveToken(res.dataUser);
           }
         })
@@ -45,6 +44,7 @@ export class AuthService {
   }
 
   private saveToken(user: any): void {
+    localStorage.setItem("ID", user.id);
     localStorage.setItem("ACCESS_TOKEN", user.accessToken);
     localStorage.setItem("EXPIRES_IN", user.expiresIn);
     localStorage.setItem("NAME", user.name);

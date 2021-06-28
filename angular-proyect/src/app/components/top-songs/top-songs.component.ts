@@ -24,11 +24,11 @@ export class TopSongsComponent implements OnInit {
   }
 
   getSpotifyTopTen():void {
-    this.spotify.getTopTen().subscribe((topSongs) => {this.topSongs = topSongs.tracks.items.slice(0, 10); console.log(this.deezerTopSongs)});
+    this.spotify.getTopTen().subscribe((topSongs) => {this.topSongs = topSongs.tracks.items.slice(0, 10);});
   }
 
   getDeezerTopTen():void {
-    this.deezer.getTopTen().subscribe((deezerTopSongs) => {this.deezerTopSongs = deezerTopSongs.tracks.data.slice(0, 10); console.log(this.deezerTopSongs)})
+    this.deezer.getTopTen().subscribe((deezerTopSongs) => {this.deezerTopSongs = deezerTopSongs.tracks.data.slice(0, 10);})
   }
 
   getTimeInMinute(millis){

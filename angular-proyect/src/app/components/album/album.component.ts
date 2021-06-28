@@ -18,7 +18,6 @@ export class AlbumComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log(params['id']);
       this.id = params['id'];
       this.platform = params['platform'];
     });
@@ -37,7 +36,6 @@ export class AlbumComponent implements OnInit {
   getAlbum() {
     this.spotify.getAlbum(this.id).subscribe((album) => {
       this.album = album;
-      console.log(album)
     });
   }
 

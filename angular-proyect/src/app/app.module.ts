@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import { NgbModule, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from './services/auth.service';
+import { FavoriteService } from './services/favorite.services';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AppComponent } from './app.component';
@@ -65,7 +66,7 @@ const appRoutes: Routes = [
     CommonModule,
     FontAwesomeModule
   ],
-  providers: [AuthService],
+  providers: [AuthService,FavoriteService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

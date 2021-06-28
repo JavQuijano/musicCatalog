@@ -5,7 +5,8 @@
         <img class="card-img-top" src="{{song.album.images[1].url}}" alt="Card image cap">
         <div class="card-body h-100 d-flex align-items-center">
           <div>
-            <h4 class="card-title mb-3">{{song.name}} <fa-icon class="ps-3" [icon]="lightHeart" (click)="favChange()"></fa-icon> </h4>
+            <h4 *ngIf="alreadyLiked" class="card-title mb-3">{{song.name}} <fa-icon class="ps-3" [icon]="boldHeart" (click)="removeFav()"></fa-icon> </h4>
+            <h4 *ngIf="!alreadyLiked" class="card-title mb-3">{{song.name}} <fa-icon class="ps-3" [icon]="lightHeart" (click)="favChange()"></fa-icon> </h4>
             <h6 class="card-subtitle mb-3 text-muted">{{song.album.name}} - {{song.album.release_date.slice(0,4)}}</h6>
             <p class="card-text">
               <strong>Duración:</strong> {{this.getTimeInMinute(song.duration_ms)}} min
