@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DeezerApiService } from 'src/app/services/deezer-api.service';
 import { SpotifyApiService } from 'src/app/services/spotify-api.service';
+
+import { FavoriteService } from '../../services/favorite.services';
 import { faHeart as lightHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as boldHeart } from '@fortawesome/free-solid-svg-icons';
 import { faSpotify, faDeezer } from '@fortawesome/free-brands-svg-icons';
@@ -14,19 +16,22 @@ export class SongComponent implements OnInit {
   id: String;
   song: any;
   platform: String;
+  alreadyLiked: boolean
   lightHeart = lightHeart;
   boldHeart = boldHeart;
   faSpotify = faSpotify;
   faDeezer = faDeezer;
 
-  constructor(private route: ActivatedRoute, private spotify:SpotifyApiService, private deezer:DeezerApiService) { }
+  constructor(private route: ActivatedRoute, private spotify:SpotifyApiService, private deezer:DeezerApiService, private favoriteService:FavoriteService) {
+
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log(params['id']);
       this.id = params['id'];
       this.platform = params['platform'];
     });
+    this.checkFavorite();
     switch (this.platform){
       case 'spotify': {
         this.getSong();
@@ -39,8 +44,6 @@ export class SongComponent implements OnInit {
 
     }
    this.spotify.setAccessToken().then(() => this.getSong());
-
-
   }
 
   getSong() {
@@ -68,5 +71,52 @@ export class SongComponent implements OnInit {
     ret += "" + mins + ":" + (secs < 10 ? "0" : "");
     ret += "" + secs;
     return ret;
+  }
+
+  favChange() {
+    var params = {
+      "song_id": this.id.toString(),
+      "platform": this.platform,
+      "user_id": localStorage.getItem("ID")
+    }
+    this.favoriteService.addFavorite(params).subscribe(res => {
+      //cambiar icono
+      //mostrar notificacion
+    });
+  }
+
+  removeFav() {
+    var params = {
+      "song_id": this.id.toString(),
+      "platform": this.platform,
+      "user_id": localStorage.getItem("ID")
+    }
+
+    this.favoriteService.removeFavorite(params).subscribe(res => {
+      if (res == 'ok') {
+        //cambiar icono
+        //mostrar notificacion
+      } else {
+        
+      }
+    });
+  }
+
+  checkFavorite() {
+    var params = {
+      "song_id": this.id.toString(),
+      "platform": this.platform,
+      "user_id": localStorage.getItem("ID")
+    }
+
+    this.favoriteService.isFavorite(params).subscribe(res => {
+      if(res.dataFavorite) {
+        console.log(1);
+        this.alreadyLiked = true;
+      } else {
+        console.log(2);
+        this.alreadyLiked = false;
+      }
+    });
   }
 }

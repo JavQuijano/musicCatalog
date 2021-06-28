@@ -10,11 +10,17 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 })
 export class HeaderComponent implements OnInit {
 
+  userLogged: Boolean;
   faSearch = faSearch;
 
   constructor(private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem("ACCESS_TOKEN")){
+      this.userLogged = true;
+    } else {
+      this.userLogged = false;
+    }
   }
 
   search(value: string) {
@@ -23,6 +29,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.logout();
+    window.location.reload();
   }
 
 }

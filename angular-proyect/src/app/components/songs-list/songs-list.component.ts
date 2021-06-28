@@ -20,7 +20,6 @@ export class SongsListComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log(params['param']);
       this.value = params['param'];
     });
 
@@ -29,12 +28,12 @@ export class SongsListComponent implements OnInit {
   }
 
   searchSong() {
-    this.spotify.searchSpotify(this.value).subscribe((results) => {this.tracks = results.tracks.items; console.log(this.tracks)});
+    this.spotify.searchSpotify(this.value).subscribe((results) => {this.tracks = results.tracks.items;});
   }
 
   searchSongDeezer() {
     const params = new HttpParams().set('q', this.value);
-    this.deezer.searchDeezer(params).subscribe((results:any ) => {this.tracksDeezer = results.data; console.log(this.tracksDeezer)});
+    this.deezer.searchDeezer(params).subscribe((results:any ) => {this.tracksDeezer = results.data; });
   }
 
   getTimeInMinute(millis){

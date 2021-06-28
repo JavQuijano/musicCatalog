@@ -15,7 +15,6 @@ export class SongTableComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log(this.tracks)
   }
 
   favClick(){
