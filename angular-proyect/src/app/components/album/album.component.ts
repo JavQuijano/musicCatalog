@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { DeezerApiService } from 'src/app/services/deezer-api.service';
 import { SpotifyApiService } from 'src/app/services/spotify-api.service';
 
+//album component used for the display of album objects in the system
 @Component({
   selector: 'app-album',
   templateUrl: './album.component.html',
@@ -32,6 +33,7 @@ export class AlbumComponent implements OnInit {
 
   }
 
+  //calls spotify service to retrieve album from api.
   getAlbum() {
     this.spotify.getAlbum(this.id).subscribe((album) => {
       this.album = album;
@@ -39,12 +41,14 @@ export class AlbumComponent implements OnInit {
     });
   }
 
+  //function to convert duration of songs from milliseconds to mm:ss
   getTimeInMinute(millis:any){
     let minutes = Math.floor(millis / 60000);
     let seconds = parseInt(((millis % 60000) / 1000).toFixed(0));
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
 
+  //function to convert duration of songs from seconds to mm:ss
   secondsToMinutes(duration){
     var mins = ~~((duration % 3600) / 60);
     var secs = ~~duration % 60;
