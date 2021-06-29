@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { SpotifyApiService } from 'src/app/services/spotify-api.service';
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { DeezerApiService } from 'src/app/services/deezer-api.service';
-
+import { faSpotify, faDeezer } from '@fortawesome/free-brands-svg-icons';
 @Component({
   selector: 'app-songs-list',
   templateUrl: './songs-list.component.html',
@@ -13,12 +13,13 @@ export class SongsListComponent implements OnInit {
   value: string;
   tracks: any;
   tracksDeezer:any;
+  faSpotify = faSpotify;
+  faDeezer = faDeezer;
 
   constructor(private route: ActivatedRoute, private spotify:SpotifyApiService, private deezer:DeezerApiService) { }
 
   ngOnInit(): void {
     this.route.params.subscribe(params => {
-      console.log(params['param']);
       this.value = params['param'];
     });
 
@@ -27,12 +28,12 @@ export class SongsListComponent implements OnInit {
   }
 
   searchSong() {
-    this.spotify.searchSpotify(this.value).subscribe((results) => {this.tracks = results.tracks.items; console.log(this.tracks)});
+    this.spotify.searchSpotify(this.value).subscribe((results) => {this.tracks = results.tracks.items;});
   }
 
   searchSongDeezer() {
     const params = new HttpParams().set('q', this.value);
-    this.deezer.searchDeezer(params).subscribe((results:any ) => {this.tracksDeezer = results.data; console.log(this.tracksDeezer)});
+    this.deezer.searchDeezer(params).subscribe((results:any ) => {this.tracksDeezer = results.data; });
   }
 
   getTimeInMinute(millis){

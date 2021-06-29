@@ -1,13 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light bg-light d-flex d-md-none">
   <div class="container-fluid container">
-    <a class="navbar-brand" href="">El Musicon</a>
+    <a class="navbar-brand d-flex d-md-none" href=""><img class="logo-header" src="assets/images/logomovil.png"></a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
+    <a *ngIf="userLogged; else loggedOutMov" class="btn btn-primary d-flex d-md-none" (click)="logout()">Log Out</a>
+    <ng-template #loggedOutMov>
+      <a class="btn btn-primary d-flex d-md-none" routerLink="/login" routerLinkActive="active">Log In</a>
+    </ng-template>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" routerLink="/releases" routerLinkActive="active" aria-current="page">Nuevos Lanzamientos</a>
+          <a class="nav-link" routerLink="/releases" routerLinkActive="active" aria-current="page">Nuevos Lanzamientos</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/top-songs" routerLinkActive="active">Top 10</a>
@@ -15,11 +21,59 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/documentation" routerLinkActive="active">Documentación</a>
         </li>
+        <li class="nav-item" *ngIf="userLogged">
+          <a class="nav-link" routerLink="/mis-favoritos" routerLinkActive="active">Mis Favoritos</a>
+        </li>
       </ul>
-      <div class="d-flex">
-        <input #searchBar class="form-control me-2" type="search" placeholder="Buscar canción" aria-label="Search">
-        <button class="btn btn-outline-primary" (click)="search(searchBar.value)">Buscar</button>
+      <div class="d-flex me-md-5 ms-md-none me-2 ms-2">
+        <input #searchBar class="form-control" type="search" placeholder="Buscar canción" aria-label="Search">
+        <button class="btn btn-outline-primary" (click)="search(searchBar.value)"><fa-icon [icon]="faSearch"></fa-icon></button>
       </div>
     </div>
   </div>
 </nav>
+<div class="navbar-desktop d-md-block d-none bg-light">
+  <div class="row container" style="text-align: center;">
+    <div class="col-9" style="padding: 0;">
+      <a class="navbar-brand" href=""><img class="logo-header" src="assets/images/logohorizontal.png"></a>
+    </div>
+    <div class="col-3" style="text-align: end; vertical-align: middle; padding: 0;" *ngIf="userLogged; else loggedOut">
+      <a class="btn btn-primary d-none d-md-flex" style="margin-top: 2rem;" (click)="logout()">Log Out</a>
+    </div>
+    <ng-template #loggedOut>
+      <div class="col-3" style="text-align: end; vertical-align: middle; padding: 0;">
+        <a class="btn btn-primary d-none d-md-flex" style="margin-top: 2rem;" routerLink="/login" routerLinkActive="active">Log In</a>
+      </div>
+    </ng-template>
+
+  </div>
+  <div class="row">
+    <div class="col-12" style="padding: 0;">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid container">
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/releases" routerLinkActive="active" aria-current="page">Nuevos Lanzamientos</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/top-songs" routerLinkActive="active">Top 10</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" routerLink="/documentation" routerLinkActive="active">Documentación</a>
+              </li>
+              <li class="nav-item" *ngIf="userLogged">
+                <a class="nav-link" routerLink="/mis-favoritos" routerLinkActive="active">Mis Favoritos</a>
+              </li>
+            </ul>
+            <div class="d-flex me-md-5 ms-md-none me-2 ms-2">
+              <input #searchBar2 name="searchBar" class="form-control" type="text" placeholder="Buscar canción" aria-label="Search">
+              <button class="btn btn-outline-primary" (click)="search(searchBar2.value)"><fa-icon [icon]="faSearch"></fa-icon></button>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+  </div>
+</div>

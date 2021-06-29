@@ -19,3 +19,14 @@
 .table-striped > tbody > tr:nth-of-type(odd).spoti-song{
   background-color: rgba(29,	208,	93, 0.2)
 }
+
+h1,h4{
+  color: white;
+}
+
+h4.card-title{
+  color: black;
+}
+.trackName{
+  font-weight: 700;
+}

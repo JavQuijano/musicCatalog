@@ -2,15 +2,19 @@
   cursor: pointer;
 }
 
-.spotify-btn{
-  background-color: #1DD05D;
+.spotify-btn {
+  color: green;
   border:none;
+  height: 10px;
 }
 
-.deezer-btn{
-  border: none;
-  background-color: #EF5466;
+.deezer-btn {
+  color: #EF5466;
+  border:none;
+  height: 10px;
+  text-align: center;
 }
+
 
 .table-striped > tbody > tr:nth-of-type(odd).deezer-song{
   background-color: rgba(239,	84,	102, 0.2)
@@ -18,4 +22,16 @@
 
 .table-striped > tbody > tr:nth-of-type(odd).spoty-song{
   background-color: rgba(29,	208,	93, 0.2)
+}
+
+.trackName {
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.platform-logo{
+  vertical-align: middle;
+  width:120px;
+  text-align: center;
+  cursor: default;
 }

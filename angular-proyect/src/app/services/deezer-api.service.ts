@@ -17,27 +17,38 @@ export class DeezerApiService {
   private apiUrl = "https://cors-anywhere.herokuapp.com/https://api.deezer.com/";
 
   constructor(private http:HttpClient) { }
-
+  /**
+   * @param  {HttpParams} params
+   * @returns Observable
+   */
   public searchDeezer(params:HttpParams):Observable<SongSearch>{
     return this.http.get<SongSearch>(this.apiUrl + 'search', {
       params: params
     });
   }
-
+  /**
+   * @returns Observable
+   */
   public getTopTen():Observable<any>{
 
     return this.http.get<any>(this.apiUrl + 'playlist/3155776842', {
       headers: httpOptions
     });
   }
-
-  public getAlbum(albumId :any){
+  /**
+   * @param  {any} albumId
+   * @returns Observable
+   */
+  public getAlbum(albumId :any):Observable<any>{
     return this.http.get<SongSearch>(this.apiUrl + 'album/' + albumId, {
       headers: httpOptions
     });
   }
-
-  public getSong(songId:any){
+  /**
+   * @param  {any} songId
+   * @returns Observable
+   */
+  public getSong(songId:any):Observable<any>{
     return this.http.get<SongSearch>(this.apiUrl + 'track/' + songId, {
       headers: httpOptions
     });

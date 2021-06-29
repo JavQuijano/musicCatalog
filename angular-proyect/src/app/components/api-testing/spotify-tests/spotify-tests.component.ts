@@ -20,9 +20,7 @@ export class SpotifyTestsComponent implements OnInit {
   }
 
   callFunctions():void {
-    console.log(this.spotify.getAccessToken());
-    this.spotify.getNewReleases().subscribe((newReleases) => {this.newReleases = newReleases;
-    console.log(newReleases)});
+    this.spotify.getNewReleases().subscribe((newReleases) => {this.newReleases = newReleases;});
     this.searchSong();
   }
 

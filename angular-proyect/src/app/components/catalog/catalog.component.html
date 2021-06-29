@@ -1,25 +1,27 @@
+<app-carousel></app-carousel>
 <div class="container">
+  <h1 class="text-center">Nuevos Lanzamientos</h1>
+  <h4 class="text-center">*Para poder visualizar Deezer Correctamente hacer click <a href="https://cors-anywhere.herokuapp.com" target="_blank">aquí</a>, seguir los pasos y refrescar la página*</h4>
   <div *ngIf="newReleases" class="row">
-    <div *ngFor="let album of newReleases.albums.items | slice: pageSize | slice: 0:itemsPerPage" class="col-3 mt-3">
+    <div *ngFor="let album of newReleases.albums.items | slice: pageSize | slice: 0:itemsPerPage" class="col-md-3 col-12 mt-3">
       <div class="card">
         <img class="card-img-top" src="{{album.images[1].url}}" alt="Card image cap">
-        <div class="card-body">
-          <h4 class="card-title">{{album.artists[0].name}}</h4>
-          <h6 class="card-subtitle mb-2 text-muted">{{album.name}}</h6>
-          <p><strong>Fecha de lanzamientos:</strong> {{album.release_date}}</p>
-          <p><strong>Numero de canciones:</strong> {{album.total_tracks}}</p>
-          <a target="_blank" href="{{album.external_urls.spotify}}" class="btn btn-primary">Ver en Spotify</a>
-        </div>
+        <app-dark-overlay
+          [artistName] = "album.artists[0].name"
+          [albumName] = "album.name"
+          [albumReleaseDate] = "album.release_date"
+          [totalTracks] = "album.total_tracks"
+          [songUrl] = "album.external_urls.spotify"
+          [albumId] = "album.id"
+        ></app-dark-overlay>
       </div>
     </div>
-
-
-
   </div>
   <br>
   <br>
-  <ngb-pagination
-      class="inline-pagination"
+  <ngb-pagination class="d-flex justify-content-center align-items-center"
+      *ngIf="newReleases"
+      class="inline-pagination d-flex justify-content-center align-items-center"
       [collectionSize]="newReleases.albums.items.length"
       #numPages
       [pageSize]="itemsPerPage"

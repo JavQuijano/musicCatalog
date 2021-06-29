@@ -1,0 +1,24 @@
+.dark-overlay{
+  width:100%;
+  position: absolute;
+  top:0;
+  left: 0;
+  height: 100%;
+  transition: 0.4s;
+}
+.dark-overlay:hover{
+  background-color:rgba(0,0,0,0.8);
+  cursor: pointer;
+}
+.dark-overlay > .card-body{
+  display: none;
+}
+.dark-overlay:hover > .card-body{
+  display: block;
+}
+h4,p{
+  color:white
+}
+h6{
+  color:rgb(200,200,200)
+}

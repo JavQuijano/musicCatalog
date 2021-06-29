@@ -1,54 +1,59 @@
-<div class="container">
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <h1>¡Las mejores canciones!</h1>
+      <h4>Selecciona tu favorita</h4>
+    </div>
+  </div>
   <div class="row mt-5 mb-5">
-    <div class="col-md-12 col-lg-6">
+    <div class="col-12 col-md-12 col-lg-6 mb-5 mb-md-none">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Top 10 Spotify</h4>
+          <h4 class="card-title">Top 10 <fa-icon [icon]="faSpotify"></fa-icon></h4>
           <table class="table table-borderless table-hover table-striped">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Canción</th>
-                <th>Duración</th>
+                <th class="d-none d-md-table-cell">Duración</th>
                 <th>Artista</th>
-                <th>Álbum</th>
+                <th class="d-none d-md-table-cell">Álbum</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let song of topSongs; let i = index" [attr.data-index]="i" class="table-select spoti-song" routerLink="/song/spotify/{{song.track.id}}" routerLinkActive="active">
                 <td scope="row">{{i + 1}}</td>
-                <td>{{song.track.name}}</td>
-                <td>{{getTimeInMinute(song.track.duration_ms)}}</td>
+                <td class="trackName">{{song.track.name}}</td>
+                <td class="d-none d-md-table-cell">{{getTimeInMinute(song.track.duration_ms)}}</td>
                 <td>{{song.track.artists[0].name}}</td>
-                <td>{{song.track.album.name}}</td>
+                <td class="d-none d-md-table-cell">{{song.track.album.name}}</td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
     </div>
-
-    <div class="col-md-12 col-lg-6" *ngIf="deezerTopSongs">
+    <div class=" col-12 col-md-12 col-lg-6" *ngIf="deezerTopSongs">
       <div class="card">
         <div class="card-body">
-          <h4 class="card-title">Top 10 Deezer</h4>
+          <h4 class="card-title">Top 10 <fa-icon [icon]="faDeezer"></fa-icon></h4>
           <table class="table table-borderless table-hover table-striped">
             <thead>
               <tr>
                 <th>#</th>
                 <th>Canción</th>
-                <th>Duración</th>
+                <th class="d-none d-md-table-cell">Duración</th>
                 <th>Artista</th>
-                <th>Álbum</th>
+                <th class="d-none d-md-table-cell">Álbum</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let song of deezerTopSongs; let i = index" [attr.data-index]="i" class="table-select deezer-song" routerLink="/song/deezer/{{song.id}}" routerLinkActive="active">
                 <td scope="row">{{i + 1}}</td>
-                <td>{{song.title}}</td>
-                <td>{{secondsToMinutes(song.duration)}}</td>
+                <td class="trackName">{{song.title}}</td>
+                <td class="d-none d-md-table-cell">{{secondsToMinutes(song.duration)}}</td>
                 <td>{{song.artist.name}}</td>
-                <td>{{song.album.title}}</td>
+                <td class="d-none d-md-table-cell">{{song.album.title}}</td>
               </tr>
             </tbody>
           </table>

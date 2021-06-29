@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { SpotifyApiService } from 'src/app/services/spotify-api.service';
 import { DeezerApiService } from 'src/app/services/deezer-api.service'
+import { faSpotify, faDeezer } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-top-songs',
@@ -9,6 +10,8 @@ import { DeezerApiService } from 'src/app/services/deezer-api.service'
 })
 export class TopSongsComponent implements OnInit {
   @Input() company: string;
+  faSpotify = faSpotify;
+  faDeezer = faDeezer;
 
   constructor(private spotify:SpotifyApiService, private deezer:DeezerApiService) { }
 
@@ -21,12 +24,11 @@ export class TopSongsComponent implements OnInit {
   }
 
   getSpotifyTopTen():void {
-    this.spotify.getTopTen().subscribe((topSongs) => {this.topSongs = topSongs.tracks.items.slice(0, 10)});
-
+    this.spotify.getTopTen().subscribe((topSongs) => {this.topSongs = topSongs.tracks.items.slice(0, 10);});
   }
 
   getDeezerTopTen():void {
-    this.deezer.getTopTen().subscribe((deezerTopSongs) => {this.deezerTopSongs = deezerTopSongs.tracks.data.slice(0, 10); console.log(this.deezerTopSongs)})
+    this.deezer.getTopTen().subscribe((deezerTopSongs) => {this.deezerTopSongs = deezerTopSongs.tracks.data.slice(0, 10);})
   }
 
   getTimeInMinute(millis){

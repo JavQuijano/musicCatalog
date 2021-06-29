@@ -1,0 +1,19 @@
+::ng-deep html {
+  min-height: 100%;
+  background:url("../assets/images/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.background{
+  background:url("../assets/images/background.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+.row{
+  margin-right: 0!important;
+  margin-left: 0!important;
+}
