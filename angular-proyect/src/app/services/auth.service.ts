@@ -12,7 +12,10 @@ export class AuthService {
   authSubject = new BehaviorSubject(false);
   private token: string;
   constructor(private httpClient: HttpClient) { }
-
+  /**
+   * @param  {UserI} user
+   * @returns Observable
+   */
   register(user: UserI): Observable<JwtResponseI> {
     return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/register`,
       user).pipe(tap(
@@ -23,7 +26,10 @@ export class AuthService {
         })
       );
   }
-
+  /**
+   * @param  {UserI} user
+   * @returns Observable
+   */
   login(user: UserI): Observable<JwtResponseI> {
     return this.httpClient.post<JwtResponseI>(`${this.AUTH_SERVER}/login`,
       user).pipe(tap(
@@ -34,7 +40,9 @@ export class AuthService {
         })
       );
   }
-
+  /**
+   * @returns void
+   */
   logout(): void {
     this.token = '';
     localStorage.removeItem("ACCESS_TOKEN");
@@ -42,7 +50,10 @@ export class AuthService {
     localStorage.removeItem("NAME");
     localStorage.removeItem("EMAIL");
   }
-
+  /**
+   * @param  {any} user
+   * @returns void
+   */
   private saveToken(user: any): void {
     localStorage.setItem("ID", user.id);
     localStorage.setItem("ACCESS_TOKEN", user.accessToken);
@@ -51,7 +62,9 @@ export class AuthService {
     localStorage.setItem("EMAIL", user.email);
     this.token = user.accessToken;
   }
-
+  /**
+   * @returns string
+   */
   private getToken(): string {
     if (!this.token) {
       this.token = localStorage.getItem("ACCESS_TOKEN");

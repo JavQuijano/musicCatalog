@@ -10,7 +10,10 @@ export class FavoriteService {
   FAVORITE_SERVER: string = 'http://localhost:3000';
   authSubject = new BehaviorSubject(false);
   constructor(private httpClient: HttpClient) { }
-
+  /**
+   * @param  {FavoriteI} favorite
+   * @returns Observable
+   */
   addFavorite(favorite: FavoriteI): Observable<FavoriteResponseI> {
     return this.httpClient.post<FavoriteResponseI>(`${this.FAVORITE_SERVER}/favorite`,
     favorite).pipe(tap(
@@ -21,7 +24,10 @@ export class FavoriteService {
         })
       );
   }
-
+  /**
+   * @param  {any} params
+   * @returns Observable
+   */
   isFavorite(params: any): Observable<FavoriteResponseI> {
     return this.httpClient.post<FavoriteResponseI>(`${this.FAVORITE_SERVER}/user_favorite`, params).pipe(tap(
         (res: FavoriteResponseI) => {
@@ -31,7 +37,10 @@ export class FavoriteService {
         })
       );
   }
-
+  /**
+   * @param  {any} params
+   * @returns Observable
+   */
   removeFavorite(params: any): Observable<any> {
     return this.httpClient.post<any>(`${this.FAVORITE_SERVER}/remove_favorite`, params).pipe(tap(
         (res: any) => {
@@ -40,5 +49,15 @@ export class FavoriteService {
           }
         })
       );
+  }
+  /**
+   * @param  {any} params
+   */
+  getUserFavorites(params:any){
+    return this.httpClient.post<any>(`${this.FAVORITE_SERVER}/all_favorites`, params).pipe(tap(
+      (res: any) => {
+        res;
+      })
+    );
   }
 }

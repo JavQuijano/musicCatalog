@@ -21,3 +21,15 @@ td,th{
   margin-top:3rem;
   margin-bottom: 3rem;
 }
+
+.deezer-btn {
+  color: #EF5466;
+  border:none;
+  height: 10px;
+  text-align: center;
+}
+
+
+.table-striped > tbody > tr:nth-of-type(odd).deezer-song{
+  background-color: rgba(239,	84,	102, 0.2)
+}

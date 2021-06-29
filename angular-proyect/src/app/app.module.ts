@@ -23,9 +23,10 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DarkOverlayComponent } from './components/dark-overlay/dark-overlay.component';
 import { AlbumComponent } from './components/album/album.component';
 import { SongTableComponent } from './components/song-table/song-table.component';
+import { FavoriteComponent } from './favorite/favorite.component';
 
 const appRoutes: Routes = [
-  {path: '', component: CatalogComponent},
+  {path: '', redirectTo: '/releases', pathMatch: 'full' },
   {path: 'spotify-tests', component: SpotifyTestsComponent},
   {path: 'deezer-tests', component: DeezerTestsComponent},
   {path: 'releases', component: CatalogComponent},
@@ -36,6 +37,7 @@ const appRoutes: Routes = [
   {path: 'documentation', component: DocumentationComponent},
   {path: 'login', component: LoginComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'mis-favoritos', component: FavoriteComponent}
 ]
 
 @NgModule({
@@ -54,7 +56,8 @@ const appRoutes: Routes = [
     CarouselComponent,
     DarkOverlayComponent,
     AlbumComponent,
-    SongTableComponent
+    SongTableComponent,
+    FavoriteComponent
   ],
   imports: [
     BrowserModule,

@@ -1,8 +1,10 @@
 <div class="mt-5 container" *ngIf="album">
-  <div class="row">
-    <div class="col-12">
-      <div class="card h-100" *ngIf="platform == 'spotify'">
+  <div class="card h-100" *ngIf="platform == 'spotify'">
+    <div class="row g-0">
+      <div class="col-12 col-md-4">
         <img class="card-img-top" src="{{album.images[0].url}}" alt="Card image cap">
+      </div>
+      <div class="col-12 col-md-8">
         <div class="card-body h-100 d-flex align-items-center">
           <div>
             <h4 class="card-title">{{album.name}}</h4>

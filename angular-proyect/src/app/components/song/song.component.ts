@@ -45,25 +45,35 @@ export class SongComponent implements OnInit {
     }
    this.spotify.setAccessToken().then(() => this.getSong());
   }
-
+  /**
+   * @method used to get song info from spotify api
+   */
   getSong() {
     this.spotify.getSong(this.id).subscribe((song) => {
       this.song = song;
     });
   }
-
+  /**
+   * @method used to get song info from deezer api
+   */
   getDeezerSong(){
     this.deezer.getSong(this.id).subscribe((song) => {
       this.song = song;
     });
   }
-
+  /**
+   * @param  {number} millis
+   * @method getTimeInMinute used to convert milliseconds to minutes in song duration
+   */
   getTimeInMinute(millis:any){
     let minutes = Math.floor(millis / 60000);
     let seconds = parseInt(((millis % 60000) / 1000).toFixed(0));
     return minutes + ":" + (seconds < 10 ? '0' : '') + seconds;
   }
-
+  /**
+   * @param  {number} duration
+   * @method secondsToMinutes used to convert seconds to minutes in song duration
+   */
   secondsToMinutes(duration){
     var mins = ~~((duration % 3600) / 60);
     var secs = ~~duration % 60;
@@ -73,18 +83,22 @@ export class SongComponent implements OnInit {
     return ret;
   }
 
+  /**
+   * @method removeFav used to add favorite status in server
+   */
   favChange() {
     var params = {
-      "song_id": this.id.toString(),
+      "song_id": this.id,
       "platform": this.platform,
       "user_id": localStorage.getItem("ID")
     }
     this.favoriteService.addFavorite(params).subscribe(res => {
-      //cambiar icono
-      //mostrar notificacion
+      this.alreadyLiked = !this.alreadyLiked;
     });
   }
-
+  /**
+   * @method removeFav used to remove favorite status in server
+   */
   removeFav() {
     var params = {
       "song_id": this.id.toString(),
@@ -93,15 +107,16 @@ export class SongComponent implements OnInit {
     }
 
     this.favoriteService.removeFavorite(params).subscribe(res => {
-      if (res == 'ok') {
-        //cambiar icono
-        //mostrar notificacion
+      if (res.status.status == 'ok') {
+        this.alreadyLiked = !this.alreadyLiked;
       } else {
 
       }
     });
   }
-
+  /**
+   * @method checkFavorite used for checking favorite status
+   */
   checkFavorite() {
     var params = {
       "song_id": this.id.toString(),

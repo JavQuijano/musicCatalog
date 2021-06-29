@@ -61,8 +61,7 @@ exports.removeFavorite = (req, res, next) => {
 
 exports.allFavorites = (req, res, next) => {
   const userData = {
-    "user_id": req.body.user_id,
-    "platform": req.body.platform
+    "user_id": req.body.user_id
   }
   Favorite.find(userData, (err, favorites) => {
     if (err) return res.status(500).send('Server error!');

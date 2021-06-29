@@ -4,7 +4,7 @@
       <thead>
         <tr>
           <th>Canción</th>
-          <th>Duración</th>
+          <th class="d-none d-md-table-cell">Duración</th>
           <th>Artista</th>
           <th>Escucha en</th>
         </tr>
@@ -12,9 +12,9 @@
       <tbody *ngIf="platform == 'spotify'">
         <tr *ngFor="let track of tracks" class="table-select spoty-song">
           <td class="track-name" routerLink="/song/spotify/{{track.id}}" routerLinkActive="active">{{track.name}}</td>
-          <td>{{this.getTimeInMinute(track.duration_ms)}}</td>
+          <td class="d-none d-md-table-cell">{{this.getTimeInMinute(track.duration_ms)}}</td>
           <td>{{track.artists[0].name}}</td>
-          <td style="width:120px;"><a target="_blank" href="{{track.external_urls.spotify}}" class="spotify-btn"><fa-icon [icon]="faSpotify" size="2x"></fa-icon></a></td>
+          <td style="width:120px; text-align: center;"><a target="_blank" href="{{track.external_urls.spotify}}" class="spotify-btn"><fa-icon [icon]="faSpotify" size="2x"></fa-icon></a></td>
         </tr>
       </tbody>
       <tbody *ngIf="platform == 'deezer'">
@@ -22,7 +22,7 @@
           <td>{{track.title}}</td>
           <td>{{this.secondsToMinutes(track.duration)}}</td>
           <td>{{track.artist.name}}</td>
-          <td style="width:120px;"><a target="_blank" href="{{track.link}}" class="deezer-btn"><fa-icon [icon]="faDeezer" size="2x"></fa-icon></a></td>
+          <td style="width:120px; text-align: center;"><a target="_blank" href="{{track.link}}" class="deezer-btn"><fa-icon [icon]="faDeezer" size="2x"></fa-icon></a></td>
         </tr>
       </tbody>
     </table>

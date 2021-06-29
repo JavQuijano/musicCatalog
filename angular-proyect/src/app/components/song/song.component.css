@@ -1,9 +1,4 @@
-.card {
-  flex-direction: row;
-}
-.card img {
-  width: 30%;
-}
+
 
 .spotify-btn {
   color: green;
@@ -29,4 +24,8 @@
 .listenOn .deezer-btn{
   padding-left: 1rem;
   vertical-align: middle;
+}
+
+.fav-heart{
+  cursor: pointer;
 }
