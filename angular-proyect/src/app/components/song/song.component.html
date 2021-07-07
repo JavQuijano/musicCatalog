@@ -6,7 +6,7 @@
           <div class="col-12 col-md-4" style="padding: 0;">
             <img class="card-img-top" src="{{song.album.images[1].url}}" alt="Card image cap">
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-4">
             <div class="card-body h-100 d-flex align-items-center">
               <div>
                 <h4 *ngIf="alreadyLiked" class="card-title mb-3 fav-heart">{{song.name}} <fa-icon class="ps-3" [icon]="boldHeart" (click)="removeFav()"></fa-icon> </h4>
@@ -22,7 +22,19 @@
                   <b>Escuchar en: </b>
                   <a target="_blank" href="{{song.external_urls.spotify}}" class="spotify-btn"><fa-icon [icon]="faSpotify" size="2x"></fa-icon></a>
                 </div>
+                
               </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4" style="padding: 0;">
+            <div class="qrcode-box d-flex align-items-center">
+              <ngx-qrcode
+                [elementType]="elementType"
+                [errorCorrectionLevel]="correctionLevel"
+                [value]="value"
+                [width]="400"
+                class="bshadow">
+              </ngx-qrcode>
             </div>
           </div>
         </div>
@@ -32,7 +44,7 @@
           <div class="col-12 col-md-4" style="padding: 0;">
             <img class="card-img-top" src="{{song.album.cover_big}}" alt="Card image cap">
           </div>
-          <div class="col-12 col-md-8">
+          <div class="col-12 col-md-4">
             <div class="card-body h-100 d-flex align-items-center">
               <div>
                 <h4 *ngIf="alreadyLiked" class="card-title mb-3 fav-heart">{{song.title}} <fa-icon class="ps-3" [icon]="boldHeart" (click)="removeFav()"></fa-icon> </h4>
@@ -49,6 +61,17 @@
                   <a target="_blank" href="{{song.link}}" class="deezer-btn"><fa-icon [icon]="faDeezer" size="2x"></fa-icon></a>
                 </div>
               </div>
+            </div>
+          </div>
+          <div class="col-12 col-md-4" style="padding: 0;">
+            <div class="qrcode-box d-flex align-items-center">
+              <ngx-qrcode
+                [elementType]="elementType"
+                [errorCorrectionLevel]="correctionLevel"
+                [value]="value"
+                [width]="400"
+                class="bshadow">
+              </ngx-qrcode>
             </div>
           </div>
         </div>

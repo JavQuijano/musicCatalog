@@ -24,6 +24,7 @@ import { DarkOverlayComponent } from './components/dark-overlay/dark-overlay.com
 import { AlbumComponent } from './components/album/album.component';
 import { SongTableComponent } from './components/song-table/song-table.component';
 import { FavoriteComponent } from './favorite/favorite.component';
+import { NgxQRCodeModule } from '@techiediaries/ngx-qrcode';
 
 const appRoutes: Routes = [
   {path: '', redirectTo: '/releases', pathMatch: 'full' },
@@ -67,7 +68,8 @@ const appRoutes: Routes = [
     NgbPaginationModule,
     FormsModule,
     CommonModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NgxQRCodeModule
   ],
   providers: [AuthService,FavoriteService],
   bootstrap: [AppComponent]

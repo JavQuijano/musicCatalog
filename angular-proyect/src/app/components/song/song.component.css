@@ -29,3 +29,8 @@
 .fav-heart{
   cursor: pointer;
 }
+
+.qrcode-box, .bshadow, .qrcode {
+  width: 100%;
+  height: 100%;
+}

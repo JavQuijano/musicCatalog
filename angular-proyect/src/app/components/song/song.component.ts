@@ -7,6 +7,9 @@ import { FavoriteService } from '../../services/favorite.services';
 import { faHeart as lightHeart } from '@fortawesome/free-regular-svg-icons';
 import { faHeart as boldHeart } from '@fortawesome/free-solid-svg-icons';
 import { faSpotify, faDeezer } from '@fortawesome/free-brands-svg-icons';
+import { NgxQrcodeElementTypes, NgxQrcodeErrorCorrectionLevels } from '@techiediaries/ngx-qrcode';
+
+
 @Component({
   selector: 'app-song',
   templateUrl: './song.component.html',
@@ -21,6 +24,9 @@ export class SongComponent implements OnInit {
   boldHeart = boldHeart;
   faSpotify = faSpotify;
   faDeezer = faDeezer;
+  elementType = NgxQrcodeElementTypes.URL;
+  correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
+  value = String;
 
   constructor(private route: ActivatedRoute, private spotify:SpotifyApiService, private deezer:DeezerApiService, private favoriteService:FavoriteService) {
 
@@ -51,6 +57,7 @@ export class SongComponent implements OnInit {
   getSong() {
     this.spotify.getSong(this.id).subscribe((song) => {
       this.song = song;
+      this.value = song.external_urls.spotify;
     });
   }
   /**
@@ -59,6 +66,7 @@ export class SongComponent implements OnInit {
   getDeezerSong(){
     this.deezer.getSong(this.id).subscribe((song) => {
       this.song = song;
+      this.value = song.link;
     });
   }
   /**
